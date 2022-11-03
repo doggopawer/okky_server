@@ -15,7 +15,17 @@ writingTag.get('/rank' , (req, res) => {
         }
     );
 });
-writingTag.get('/')
-
+writingTag.get('/article' , (req, res) => {
+    const { writingId } = req.body;
+    connection.query(
+        'SELECT * FROM writing_tag\n' +
+        'JOIN writing ON writing_tag.writing_id = writing.id\n' +
+        'WHERE writing.id= ?;',
+        [writingId],
+        function(err, results) {
+            res.send(results);
+        }
+    );
+});
 
 export default writingTag;

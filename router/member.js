@@ -3,10 +3,11 @@ import connection from "../mysql.js";
 
 const member = express.Router();
 
-member.get('/' , (req, res) => {
+member.get('/my' , (req, res) => {
+    const { memberId } = req.body
     connection.query(
         'SELECT * FROM `member` WHERE `id` = ?',
-        ['doggopawer'],
+        [memberId],
         function(err, results) {
             res.send(results);
         }
