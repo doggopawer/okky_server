@@ -13,6 +13,7 @@ import bigCommentLike from "./router/bigCommentLike.js";
 import smallCommentLike from "./router/smallCommentLike.js";
 import scrap from "./router/scrap.js";
 import memberTag from "./router/memberTag.js";
+import bigMenu from "./router/bigMenu.js";
 const app = express()
 
 connection.connect();
@@ -21,6 +22,7 @@ app.use(helmet());
 app.use(morgan('tiny'))
 app.use(express.json());
 app.use(express.urlencoded({extended : true}))
+app.use('/big-menu', bigMenu);
 app.use('/smallMenu', smallMenu);
 app.use('/writing', writing);
 app.use('/writingTag', writingTag);

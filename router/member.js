@@ -13,7 +13,7 @@ member.get('/my' , (req, res) => {
         }
     );
 });
-member.get('/rank' , (req, res) => {
+member.get('/main' , (req, res) => {
     connection.query(
         'SELECT nick,activity_score FROM member\n' +
         'ORDER BY activity_score DESC \n' +
