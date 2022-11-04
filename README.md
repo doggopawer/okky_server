@@ -6,13 +6,13 @@
 - [ ] GET /common/member/rank
 
 ### 회원가입 페이지
-- [ ] POST /sign-up/member/item
+- [ ] POST /account/member/sign-up
 
 ### 로그인 페이지
-- [ ] POST /sign-in/member/auth
+- [ ] POST /account/member/sign-in
 
 ### 비밀번호 찾기 페이지
-- [ ] POST /account-find/email
+- [ ] PUT /account/member/find-account
 
 ### 메인 페이지
 - [ ] GET /main/writing/list
@@ -49,7 +49,7 @@
 ### 아티클 수정 페이지
 - [ ] PUT /article/writing/item
 
-### 마이 페이지
+### 개인 정보 페이지
 - [ ] GET /info/member/item
 - [ ] GET /info/member-tag/list
 - [ ] POST /info/member-tag/item
