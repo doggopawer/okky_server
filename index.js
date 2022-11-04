@@ -25,6 +25,5 @@ app.use('/article', article);
 app.use('/info', info);
 app.use('/activity', activity);
 
-
 app.listen(3000);
 
