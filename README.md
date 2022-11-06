@@ -3,20 +3,20 @@
 ### 공통
 - [ ] GET /common/writing-tag/rank
 - [ ] GET /common/big-menu/list
-- [ ] GET /common/member/rank
+- [ ] GET /common/model/rank
 
 ### 회원가입 페이지
-- [ ] POST /account/member/sign-up
+- [ ] POST /account/model/sign-up
 
 ### 로그인 페이지
-- [ ] POST /account/member/sign-in
+- [ ] POST /account/model/sign-in
 
 ### 비밀번호 찾기 페이지
-- [ ] PUT /account/member/find-account
+- [ ] PUT /account/model/find-account
 
 ### 메인 페이지
 - [ ] GET /main/writing/list
-- [ ] GET /main/member/item
+- [ ] GET /main/model/item
 ### 갤러리 페이지
 - [ ] GET /gallery/writing/list
 - [ ] GET /gallery/small-menu/list
@@ -50,10 +50,10 @@
 - [ ] PUT /article/writing/item
 
 ### 개인 정보 페이지
-- [ ] GET /info/member/item
-- [ ] GET /info/member-tag/list
-- [ ] POST /info/member-tag/item
-- [ ] PUT /info/member/item
+- [ ] GET /info/model/item
+- [ ] GET /info/model-tag/list
+- [ ] POST /info/model-tag/item
+- [ ] PUT /info/model/item
 
 ### 활동 페이지
 - [ ] GET /activity/writing/list

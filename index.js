@@ -1,5 +1,5 @@
 import express, {urlencoded} from 'express';
-import connection from  './mysql.js';
+import {sequelize} from './database.js';
 import helmet from "helmet";
 import morgan from "morgan";
 import common from "./route/common.js";
@@ -11,7 +11,6 @@ import info from "./route/info.js";
 import activity from "./route/activity.js";
 const app = express()
 
-connection.connect();
 
 app.use(helmet());
 app.use(morgan('tiny'))
@@ -24,6 +23,11 @@ app.use('/gallery', gallery);
 app.use('/article', article);
 app.use('/info', info);
 app.use('/activity', activity);
+
+sequelize.sync()
+.then((client) => {
+    console.log("데이터베이스 연동");
+});
 
 app.listen(3000);
 
