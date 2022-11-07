@@ -82,7 +82,8 @@ article.get('/small-comment-like/amount' , async(req, res) => {
     return res.json({ result });
 });
 
-article.get('/writing-tag/list' , (req, res) => {
+article.get('/writing-tag/list' , async(req, res) => {
+    const {} = req.body;
 
 });
 
@@ -155,14 +156,32 @@ article.post('/small-comment-like/item' , async(req, res) => {
     })
     return res.json(newSmallCommentLike);
 });
-article.delete('/writing/item' , (req, res) => {
-
+article.delete('/writing/item' , async(req, res) => {
+    const {writingId} = req.body;
+    await writing.destroy({
+        where: {
+            id: writingId,
+        }
+    })
+    res.json({ message: `글 ${writingId}번 삭제 완료`})
 });
-article.delete('/big-comment/item' , (req, res) => {
-
+article.delete('/big-comment/item' , async(req, res) => {
+    const {bigCommentId} = req.body;
+    await bigComment.destroy({
+        where: {
+            id: bigCommentId,
+        }
+    })
+    res.json({ message: `글 ${bigCommentId}번 삭제 완료`})
 });
-article.delete('/small-comment/item' , (req, res) => {
-
+article.delete('/small-comment/item' , async(req, res) => {
+    const {smallCommentId} = req.body;
+    await smallComment.destroy({
+        where: {
+            id: smallCommentId,
+        }
+    })
+    res.json({ message: `글 ${smallCommentId}번 삭제 완료`})
 });
 article.delete('/writing-like/item' , (req, res) => {
 
