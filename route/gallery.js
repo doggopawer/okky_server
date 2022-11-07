@@ -1,5 +1,5 @@
 import express from "express";
-import {writing} from "../model.js";
+import {smallMenu, writing} from "../model.js";
 
 const gallery = express.Router();
 
@@ -16,8 +16,16 @@ gallery.get('/writing/list' , async(req, res) => {
 
     return res.json(writings);
 });
-gallery.get('/small-menu/list' , (req, res) => {
-    
+gallery.get('/small-menu/lnb' , async(req, res) => {
+    const { bigMenuId } = req.body;
+
+    const smallMenus = await smallMenu.findAll({
+        where: {
+            bigMenuId,
+        }
+    })
+
+    return res.json(smallMenus);
 });
 gallery.get('/writing/page' , (req, res) => {
 

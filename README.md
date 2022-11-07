@@ -20,7 +20,7 @@
 - [x] GET /main/writing/list
 ### 갤러리 페이지
 - [x] GET /gallery/writing/list
-- [ ] GET /gallery/small-menu/list
+- [x] GET /gallery/small-menu/lnb
 - [ ] GET /gallery/writing/page
 
 ### 아티클 페이지
