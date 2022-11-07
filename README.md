@@ -19,7 +19,7 @@
 ### 메인 페이지
 - [x] GET /main/writing/list
 ### 갤러리 페이지
-- [ ] GET /gallery/writing/list
+- [x] GET /gallery/writing/list
 - [ ] GET /gallery/small-menu/list
 - [ ] GET /gallery/writing/page
 

@@ -13,7 +13,6 @@ main.get('/writing/list' , async(req, res) => {
     const writings = await writing.findAll({
         where: {
             smallMenuId,
-
         },
         limit: 5,
         order: [['createdAt', 'DESC']]
