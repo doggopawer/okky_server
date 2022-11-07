@@ -1,6 +1,6 @@
 import express from "express";
 import connection from "../database.js";
-import {bigComment, writing} from "../model.js";
+import {bigComment, smallComment, writing} from "../model.js";
 
 const article = express.Router();
 
@@ -18,11 +18,14 @@ article.get('/big-comment/list' , async(req, res) => {
     })
     return res.json(bigComments);
 });
-article.get('/small-comment/list' , (req, res) => {
-
-});
-article.get('/writing-tag/list' , (req, res) => {
-
+article.get('/small-comment/list' , async(req, res) => {
+    const { bigCommentId } = req.body;
+    const smallComments = await smallComment.findAll({
+        where: {
+            bigCommentId
+        }
+    })
+    return res.json(smallComments);
 });
 article.get('/writing-like/amount' , (req, res) => {
 
@@ -33,6 +36,12 @@ article.get('/big-comment-like/amount' , (req, res) => {
 article.get('/small-comment-like/amount' , (req, res) => {
 
 });
+
+article.get('/writing-tag/list' , (req, res) => {
+
+});
+
+
 article.post('/big-comment/item' , async(req, res) => {
     const {description, writingId} = req.body;
     const newBigComment = await bigComment.create({
@@ -43,8 +52,14 @@ article.post('/big-comment/item' , async(req, res) => {
     })
     return res.json(newBigComment);
 });
-article.post('/small-coment/item' , (req, res) => {
-
+article.post('/small-comment/item' , async(req, res) => {
+    const {description, bigCommentId} = req.body;
+    const newSmallComment = await smallComment.create({
+        description,
+        updated_yn: false,
+        bigCommentId,
+    })
+    return res.json(newSmallComment);
 });
 article.post('/writing-like/item' , (req, res) => {
 
