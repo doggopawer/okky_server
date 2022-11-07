@@ -31,7 +31,6 @@ account.post('/member/sign-in' , async(req, res) => {
     const {email, password} = req.body;
     // 바디의 패스워드와, 디비의 패스워드를 비교한다.
     const memberOne = await member.findOne({ where: { email }});
-    console.log(memberOne);
     const dbPassword = memberOne.password;
 
     if(password === dbPassword) {

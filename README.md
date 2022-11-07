@@ -2,8 +2,9 @@
 
 ### 공통
 - [ ] GET /common/writing-tag/rank
-- [x] GET /common/big-menu/list
+- [x] GET /common/big-menu/gnb
 - [ ] GET /common/model/rank
+- [x] GET /common/member/profile
 
 ### 회원가입 페이지
 - [x] POST /account/member/sign-up
@@ -16,8 +17,7 @@
 - [ ] PUT /account/member/find-account
 
 ### 메인 페이지
-- [x] GET /main/writing/list 
-- [ ] GET /main/model/item
+- [x] GET /main/writing/list
 ### 갤러리 페이지
 - [ ] GET /gallery/writing/list
 - [ ] GET /gallery/small-menu/list
