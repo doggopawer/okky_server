@@ -1,6 +1,6 @@
 import express from "express";
 import connection from "../database.js";
-import {bigComment, smallComment, writing} from "../model.js";
+import {bigComment, smallComment, writing, writingLike} from "../model.js";
 
 const article = express.Router();
 
@@ -27,8 +27,23 @@ article.get('/small-comment/list' , async(req, res) => {
     })
     return res.json(smallComments);
 });
-article.get('/writing-like/amount' , (req, res) => {
+article.get('/writing-like/amount' , async(req, res) => {
+    const { writingId } = req.body;
+    const writingLikes = await writingLike.findAll({
+        where: {
+            writingId
+        }
+    })
+    let result = 0;
 
+    for(const item of writingLikes) {
+        if(item.like_type === "up") {
+            result++;
+        } else {
+            result--;
+        }
+    }
+    return res.json({ result })
 });
 article.get('/big-comment-like/amount' , (req, res) => {
 
@@ -43,26 +58,34 @@ article.get('/writing-tag/list' , (req, res) => {
 
 
 article.post('/big-comment/item' , async(req, res) => {
-    const {description, writingId} = req.body;
+    const {description, writingId, email} = req.body;
     const newBigComment = await bigComment.create({
         description,
         adopt_yn: false,
         updated_yn: false,
         writingId,
+        email,
     })
     return res.json(newBigComment);
 });
 article.post('/small-comment/item' , async(req, res) => {
-    const {description, bigCommentId} = req.body;
+    const {description, bigCommentId, email} = req.body;
     const newSmallComment = await smallComment.create({
         description,
         updated_yn: false,
         bigCommentId,
+        email,
     })
     return res.json(newSmallComment);
 });
-article.post('/writing-like/item' , (req, res) => {
-
+article.post('/writing-like/item' , async(req, res) => {
+    const {likeType, writingId, email} = req.body;
+    const newWritingLike = await writingLike.create({
+        like_type: likeType,
+        writingId,
+        email
+    })
+    return res.json(newWritingLike);
 });
 article.post('/big-comment-like/item' , (req, res) => {
 
