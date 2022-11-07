@@ -1,6 +1,6 @@
 import express from "express";
 import connection from "../database.js";
-import {bigComment, smallComment, writing, writingLike} from "../model.js";
+import {bigComment, bigCommentLike, member, smallComment, smallCommentLike, writing, writingLike} from "../model.js";
 
 const article = express.Router();
 
@@ -45,11 +45,41 @@ article.get('/writing-like/amount' , async(req, res) => {
     }
     return res.json({ result })
 });
-article.get('/big-comment-like/amount' , (req, res) => {
+article.get('/big-comment-like/amount' , async(req, res) => {
+    const { bigCommentId } = req.body;
+    const bigCommentLikes = await bigCommentLike.findAll({
+        where: {
+            bigCommentId
+        }
+    })
+    let result = 0;
 
+    for(const item of bigCommentLikes) {
+        if(item.like_type === "up") {
+            result++;
+        } else {
+            result--;
+        }
+    }
+    return res.json({ result });
 });
-article.get('/small-comment-like/amount' , (req, res) => {
+article.get('/small-comment-like/amount' , async(req, res) => {
+    const { smallCommentId } = req.body;
+    const smallCommentLikes = await smallCommentLike.findAll({
+        where: {
+            smallCommentId
+        }
+    })
+    let result = 0;
 
+    for(const item of smallCommentLikes) {
+        if(item.like_type === "up") {
+            result++;
+        } else {
+            result--;
+        }
+    }
+    return res.json({ result });
 });
 
 article.get('/writing-tag/list' , (req, res) => {
@@ -59,39 +89,71 @@ article.get('/writing-tag/list' , (req, res) => {
 
 article.post('/big-comment/item' , async(req, res) => {
     const {description, writingId, email} = req.body;
+
+    const memberOne = await member.findOne({ where: { email } });
+    const memberId = memberOne.id;
+
     const newBigComment = await bigComment.create({
         description,
         adopt_yn: false,
         updated_yn: false,
         writingId,
-        email,
+        memberId,
     })
     return res.json(newBigComment);
 });
 article.post('/small-comment/item' , async(req, res) => {
     const {description, bigCommentId, email} = req.body;
+
+    const memberOne = await member.findOne({ where: { email } });
+    const memberId = memberOne.id;
+
     const newSmallComment = await smallComment.create({
         description,
         updated_yn: false,
         bigCommentId,
-        email,
+        memberId,
     })
     return res.json(newSmallComment);
 });
 article.post('/writing-like/item' , async(req, res) => {
     const {likeType, writingId, email} = req.body;
+
+    const memberOne = await member.findOne({ where: { email } });
+    const memberId = memberOne.id;
+
     const newWritingLike = await writingLike.create({
         like_type: likeType,
         writingId,
-        email
+        memberId
     })
     return res.json(newWritingLike);
 });
-article.post('/big-comment-like/item' , (req, res) => {
+article.post('/big-comment-like/item' , async(req, res) => {
+    const {likeType, bigCommentId, email} = req.body;
 
+    const memberOne = await member.findOne({ where: { email } });
+    const memberId = memberOne.id;
+
+    const newBigCommentLike = await bigCommentLike.create({
+        like_type: likeType,
+        bigCommentId,
+        memberId,
+    })
+    return res.json(newBigCommentLike);
 });
-article.post('/small-comment-like/item' , (req, res) => {
+article.post('/small-comment-like/item' , async(req, res) => {
+    const {likeType, smallCommentId, email} = req.body;
 
+    const memberOne = await member.findOne({ where: { email } });
+    const memberId = memberOne.id;
+
+    const newSmallCommentLike = await smallCommentLike.create({
+        like_type: likeType,
+        smallCommentId,
+        memberId
+    })
+    return res.json(newSmallCommentLike);
 });
 article.delete('/writing/item' , (req, res) => {
 

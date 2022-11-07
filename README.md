@@ -28,14 +28,14 @@
 - [x] GET /article/big-comment/list
 - [x] GET /article/small-comment/list
 - [ ] GET /article/writing-tag/list
-- [ ] GET /article/writing-like/amount
-- [ ] GET /article/big-comment-like/amount
-- [ ] GET /article/small-comment-like/amount
+- [x] GET /article/writing-like/amount
+- [x] GET /article/big-comment-like/amount
+- [x] GET /article/small-comment-like/amount
 - [x] POST /article/big-comment/item
 - [x] POST /article/small-comment/item
-- [ ] POST /article/writing-like/item
-- [ ] POST /article/big-comment-like/item
-- [ ] POST /article/small-comment-like/item
+- [x] POST /article/writing-like/item
+- [x] POST /article/big-comment-like/item
+- [x] POST /article/small-comment-like/item
 - [ ] DELETE /article/writing/item
 - [ ] DELETE /article/big-comment/item
 - [ ] DELETE /article/small-comment/item
