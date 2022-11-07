@@ -1,13 +1,15 @@
 import express from "express";
 import connection from "../database.js";
+import {writing} from "../model.js";
 
 const article = express.Router();
 
-article.get('/writing/item' , (req, res) => {
-
+article.get('/writing/item' , async(req, res) => {
+    const { writingId } = req.body;
+    const writingOne = await writing.findOne({ where: { id: writingId } });
+    return res.json(writingOne);
 });
 article.get('/big-comment/list' , (req, res) => {
-
 });
 article.get('/small-comment/list' , (req, res) => {
 

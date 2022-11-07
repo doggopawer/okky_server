@@ -24,7 +24,7 @@
 - [x] GET /gallery/writing/page
 
 ### 아티클 페이지
-- [ ] GET /article/writing/item
+- [x] GET /article/writing/item
 - [ ] GET /article/big-comment/list
 - [ ] GET /article/small-comment/list
 - [ ] GET /article/writing-tag/list
