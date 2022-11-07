@@ -2,9 +2,9 @@ import jwt from "jsonwebtoken";
 
 const secretKey = 'nmu21y4%Hh&KhfW3jlb7a!@4sGoF2aR3';
 
-export function createToken(memberId) {
+export function createToken(email) {
     return jwt.sign({
-        memberId
+        email
     }, secretKey);
 }
 

@@ -2,20 +2,21 @@
 
 ### 공통
 - [ ] GET /common/writing-tag/rank
-- [ ] GET /common/big-menu/list
+- [x] GET /common/big-menu/list
 - [ ] GET /common/model/rank
 
 ### 회원가입 페이지
-- [ ] POST /account/model/sign-up
+- [x] POST /account/member/sign-up
+- [ ] POST /account/member/already-exist
 
 ### 로그인 페이지
-- [ ] POST /account/model/sign-in
+- [x] POST /account/member/sign-in
 
 ### 비밀번호 찾기 페이지
-- [ ] PUT /account/model/find-account
+- [ ] PUT /account/member/find-account
 
 ### 메인 페이지
-- [ ] GET /main/writing/list
+- [x] GET /main/writing/list 
 - [ ] GET /main/model/item
 ### 갤러리 페이지
 - [ ] GET /gallery/writing/list
