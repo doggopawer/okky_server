@@ -27,7 +27,20 @@ gallery.get('/small-menu/lnb' , async(req, res) => {
 
     return res.json(smallMenus);
 });
-gallery.get('/writing/page' , (req, res) => {
+gallery.get('/writing/page' , async(req, res) => {
+    const { smallMenuId } = req.body;
+
+    // 레코드 양 구하기
+    const smallMenuAmount = await writing.findAll({
+        where: {
+            smallMenuId,
+        }
+    });
+
+    return res.json({
+        "smallMenuAmount": smallMenuAmount.length,
+    })
+
 
 });
 

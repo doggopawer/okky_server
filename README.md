@@ -21,7 +21,7 @@
 ### 갤러리 페이지
 - [x] GET /gallery/writing/list
 - [x] GET /gallery/small-menu/lnb
-- [ ] GET /gallery/writing/page
+- [x] GET /gallery/writing/page
 
 ### 아티클 페이지
 - [ ] GET /article/writing/item
