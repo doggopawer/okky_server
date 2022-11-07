@@ -25,13 +25,13 @@
 
 ### 아티클 페이지
 - [x] GET /article/writing/item
-- [ ] GET /article/big-comment/list
+- [x] GET /article/big-comment/list
 - [ ] GET /article/small-comment/list
 - [ ] GET /article/writing-tag/list
 - [ ] GET /article/writing-like/amount
 - [ ] GET /article/big-comment-like/amount
 - [ ] GET /article/small-comment-like/amount
-- [ ] POST /article/big-comment/item
+- [x] POST /article/big-comment/item
 - [ ] POST /article/small-comment/item
 - [ ] POST /article/writing-like/item
 - [ ] POST /article/big-comment-like/item
